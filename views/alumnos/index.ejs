@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Alumnos</title>
+</head>
+
+<body>
+    <div class="container">
+        <h1 class="mb-4">Registro de Alumnos</h1>
+        <a href="/alumnos/nuevo" class="btn btn-success">Registrar nuevo alumno</a>
+
+        <% alumnos.forEach(alumnos=> { %>
+            <div class="card mt-4">
+                <div class="card-body">
+                    <h4 class="card-title">
+                        <%= alumnos.curso%>
+                    </h4>
+                    <div class="card-subtitle text-muted mb-2">
+                        <%= alumnos.fechaRegistro.toLocaleDateString() %>
+                    </div>
+                    <div class="card-text mb-2">
+                        <h6 class="d-inline">Nombre: </h6>
+                        <%= alumnos.nombre %>
+                    </div>
+                    <div class="card-text mb-2">
+                        <h6 class="d-inline">Apellido: </h6>
+                        <%= alumnos.apellido %>
+                    </div>
+                    <div class="card-text mb-2">
+                        <h6 class="d-inline">Dni: </h6>
+                        <%= alumnos.dni %>
+                    </div>
+                    <a href="alumnos/<%= alumnos.id %>" class="btn btn-info">Informacion</a>
+                    <form action="/alumnos/<%= alumnos.id %>?_method=DELETE" method="POST" class="d-inline">
+                        <button type="submit" class="btn btn-danger">Eliminar</button>
+                    </form>
+                </div>
+            </div>
+            <% }) %>
+    </div>
+</body>
+
+</html>
